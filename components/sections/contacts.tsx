@@ -1,0 +1,62 @@
+"use client";
+
+import { BebasNeue } from "@/addons/fonts-loaders";
+import { Mail } from "lucide-react";
+
+function ContactButton({ message, text }: { message: string; text: string }) {
+  return (
+    <div>
+      <a
+        href={`mailto:bchtrrprmd@gmail.com, bchtrrprmd@gmail.com?subject=${message}`}
+        className="w-36 md:w-48 h-14 bg-transparent border tracking-tight border-neutral-400 text-neutral-200 text-md mt-6 group flex items-center justify-center gap-3 relative overflow-hidden"
+      >
+        <div className="relative items-center h-5 overflow-hidden uppercase">
+          <div className="transition-transform duration-500 ease-out group-hover:-translate-y-6">
+            <div className="flex flex-row items-center">
+              <span className="block leading-[20px] text-center transform origin-right group-hover:rotate-[15deg]">
+                {text}
+              </span>
+              <Mail className="ml-3 text-white" size={22} />
+            </div>
+            <div className="flex flex-row items-center">
+              <span className="block text-center transform origin-left translate-y-0 group-hover:rotate-0">
+                {text}
+              </span>
+              <Mail className="ml-3 text-white" size={22} />
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  );
+}
+
+export default function Contact({ lang }: { lang: any }) {
+  return (
+    <section
+      id="contact"
+      className="pt-[18dvh] md:pt-0 md:h-screen w-screen flex flex-col items-center justify-center relative"
+    >
+      <div className="md:min-h-screen mx-auto text-center flex flex-col items-center justify-center z-10">
+        <h1
+          className={`${BebasNeue.className} ${
+            lang.lang === "en" ? "text-6xl" : "text-5xl"
+          } uppercase font-medium tracking-tight text-neutral-200 md:text-9xl leading-[0.95] md:leading-[6rem]`}
+        >
+          {lang.contact_section.title_1}
+        </h1>
+        <h2
+          className={`${BebasNeue.className} ${
+            lang.lang === "en" ? "text-6xl" : "text-5xl"
+          } uppercase font-medium tracking-tight text-neutral-500 md:text-9xl leading-[0.95] md:leading-[6rem]`}
+        >
+          {lang.contact_section.title_2}
+        </h2>
+        <ContactButton
+          message={lang.contact_section.message}
+          text={lang.contact_section.button}
+        />
+      </div>
+    </section>
+  );
+}

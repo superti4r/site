@@ -1,10 +1,10 @@
 "use client";
 
-import HeroView from "@/components/sections/hero";
-import ProjectsView from "@/components/sections/projects";
-import AboutView from "@/components/sections/about";
-import ServicesView from "@/components/sections/services";
-import ContactView from "@/components/sections/contact";
+import Heros from "@/components/sections/heros";
+import Projects from "@/components/sections/projects";
+import Abouts from "@/components/sections/abouts";
+import Services from "@/components/sections/services";
+import Contact from "@/components/sections/contacts";
 
 type Props = {
   id: "hero" | "projects" | "about" | "services" | "contact";
@@ -12,11 +12,11 @@ type Props = {
 };
 
 const Views = {
-  hero: HeroView,
-  about: AboutView,
-  projects: ProjectsView,
-  services: ServicesView,
-  contact: ContactView,
+  hero: Heros,
+  about: Abouts,
+  projects: Projects,
+  services: Services,
+  contact: Contact,
 };
 
 export default function Section(props: Props) {
