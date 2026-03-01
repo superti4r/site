@@ -1,0 +1,37 @@
+{
+  "lang": "en",
+  "page": {
+    "title": "Bachtiar Dwi Pramudi | @superti4r",
+    "desc": "Bachtiar Dwi Pramudi Web Portfolio"
+  },
+  "home_section": {
+    "desc": "e vent se lève! Il faut tenter de vivre! - Paul Valéry",
+    "button_text": "Download CV",
+    "location": "Based in Banyuwangi, Indonesia"
+  },
+  "about_section": {
+    "title": "Biography",
+
+    "paragraph": "As a Software Engineer with expertise in web development, I am creating innovative and user-friendly solutions that real-world problems. I am currently pursuing my S.Tr.Kom degree in Informatic Engineering at the Jember State Polytechnic, where i honed my skills in Web Development."
+  },
+  "project_section": {
+    "title": "— My Awesome Projects",
+    "desc": "I build beautiful projects with the latest technologies and frameworks. I am a passionate developer and designer that loves to build amazing projects.",
+    "project_1": "-",
+    "project_2": "-",
+    "project_3": "-",
+    "project_4": "-"
+  },
+  "service_section": {
+    "title": "— Solutions I build for your business",
+    "mobile": "-",
+    "web": "-",
+    "iot": "-"
+  },
+  "contact_section": {
+    "title_1": "Contact Me",
+    "title_2": "Let's Work Together",
+    "button": "Contact",
+    "message": "I am interested in working with you."
+  }
+}

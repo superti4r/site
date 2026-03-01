@@ -1,0 +1,37 @@
+{
+  "lang": "id",
+  "page": {
+    "title": "Bachtiar Dwi Pramudi | @superti4r",
+    "desc": "Bachtiar Dwi Pramudi Web Portfolio"
+  },
+  "home_section": {
+    "desc": "e vent se lève! Il faut tenter de vivre! - Paul Valéry",
+    "button_text": "Download CV",
+    "location": "Berbasis di Banyuwangi, Indonesia"
+  },
+  "about_section": {
+    "title": "Biografi",
+
+    "paragraph": "Sebagai Software Engineer dengan keahlian dalam pengembangan web, saya menciptakan solusi inovatif dan ramah pengguna untuk masalah dunia nyata. Saat ini saya sedang menempuh gelar S.Tr.Kom di Jurusan Teknik Informatika di Politeknik Negeri Jember, di mana saya mengasah keterampilan pengembangan web."
+  },
+  "project_section": {
+    "title": "— Proyek Keren Saya",
+    "desc": "Saya membangun proyek-proyek yang indah dengan teknologi dan kerangka kerja terbaru. Saya seorang pengembang dan desainer yang bersemangat untuk membangun proyek-proyek luar biasa.",
+    "project_1": "-",
+    "project_2": "-",
+    "project_3": "-",
+    "project_4": "-"
+  },
+  "service_section": {
+    "title": "— Solusi yang Saya Bangun untuk Bisnis Anda",
+    "mobile": "-",
+    "web": "-",
+    "iot": "-"
+  },
+  "contact_section": {
+    "title_1": "Hubungi Saya",
+    "title_2": "Mari Bekerja Bersama",
+    "button": "Hubungi",
+    "message": "Saya tertarik untuk bekerja sama dengan Anda."
+  }
+}
