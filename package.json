@@ -19,7 +19,7 @@
 		"auth:schema": "better-auth generate --config src/lib/server/auth.ts --output src/lib/server/db/auth.schema.ts --yes"
 	},
 	"devDependencies": {
-		"@better-auth/cli": "^1.4.18",
+		"@better-auth/cli": "^1.4.21",
 		"@fontsource/fira-mono": "^5.2.7",
 		"@neoconfetti/svelte": "^2.2.2",
 		"@neondatabase/serverless": "^1.0.2",
@@ -30,7 +30,7 @@
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.18",
 		"@types/node": "^24",
-		"better-auth": "^1.4.18",
+		"better-auth": "^1.4.21",
 		"drizzle-kit": "^0.31.8",
 		"drizzle-orm": "^0.45.1",
 		"prettier": "^3.8.1",
@@ -41,5 +41,9 @@
 		"tailwindcss": "^4.1.18",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1"
+	},
+	"overrides": {
+		"better-auth": "1.4.21",
+		"@better-auth/core": "1.4.21"
 	}
 }
