@@ -1,5 +1,11 @@
 {
 	"name": "site",
+	"description": "@superti4r portfolio site using Svelte 5",
+	"author": {
+		"name": "Bachtiar Dwi Pramudi",
+		"github": "superti4r",
+		"instagram": "superti4r"
+	},
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
