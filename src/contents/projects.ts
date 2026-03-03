@@ -10,54 +10,44 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
-		name: 'S-Learn',
+		name: 'E-Saturasi',
 		description:
-			'A comprehensive Learning Management System (LMS) built with Laravel, Tailwind CSS, Go, Flutter. It offers a seamless experience for both educators and students, featuring course creation, interactive lessons, and real-time collaboration.',
-		image: '/images/projects/slearn.png',
-		url: 'https://slearn-jti.com/',
-		github: 'https://github.com/jtiinnovation/slearn',
+			'Learning Management System for SMKN 1 Sumberasih, built with Laravel and Tailwind CSS. It provides a platform for students and teachers to manage courses, assignments, and communication effectively.',
+		image: '/images/projects/p01-esaturasi-banner.webp',
+		url: '/',
+		github: 'https://github.com/superti4r/esaturasi',
 		category: 'Web App',
-		tags: ['laravel', 'tailwindcss', 'go', 'flutter', 'vue']
+		tags: ['laravel', 'tailwindcss', 'flutter', 'filament']
 	},
 	{
 		name: 'S-Learn',
 		description:
 			'A comprehensive Learning Management System (LMS) built with Laravel, Tailwind CSS, Go, Flutter. It offers a seamless experience for both educators and students, featuring course creation, interactive lessons, and real-time collaboration.',
-		image: '/images/projects/slearn.png',
+		image: '/images/projects/p02-slearn-polije-banner.webp',
 		url: 'https://slearn-jti.com/',
-		github: 'https://github.com/jtiinnovation/slearn',
+		github: '/',
 		category: 'Web App',
 		tags: ['laravel', 'tailwindcss', 'go', 'flutter', 'vue']
 	},
 	{
-		name: 'S-Learn',
+		name: 'POLARIS',
 		description:
-			'A comprehensive Learning Management System (LMS) built with Laravel, Tailwind CSS, Go, Flutter. It offers a seamless experience for both educators and students, featuring course creation, interactive lessons, and real-time collaboration.',
-		image: '/images/projects/slearn.png',
-		url: 'https://slearn-jti.com/',
-		github: 'https://github.com/jtiinnovation/slearn',
+			'Digital Library System for Politeknik Negeri Surabaya, developed using Laravel, Tailwind CSS, Filament. In this project, rewrote from SLiMS (PHP Native) to Laravel, enhancing performance, security, and user experience while maintaining the core functionalities of a digital library.',
+		image: '/images/projects/p03-polaris-surabaya-banner.webp',
+		url: 'https://polaris-library.poltekpel-sby.ac.id/',
+		github: '/',
 		category: 'Web App',
-		tags: ['laravel', 'tailwindcss', 'go', 'flutter', 'vue']
+		tags: ['laravel', 'tailwindcss', 'filament', 'vite']
 	},
 	{
-		name: 'S-Learn',
+		name: '4yasenime',
 		description:
-			'A comprehensive Learning Management System (LMS) built with Laravel, Tailwind CSS, Go, Flutter. It offers a seamless experience for both educators and students, featuring course creation, interactive lessons, and real-time collaboration.',
-		image: '/images/projects/slearn.png',
-		url: 'https://slearn-jti.com/',
-		github: 'https://github.com/jtiinnovation/slearn',
+			'Unofficial anime streaming website built with Next.js and Tailwind CSS. It provides a user-friendly interface for browsing and streaming anime content, featuring a vast library of titles, user reviews, and personalized recommendations.',
+		image: '/images/projects/p04.4yasenime-banner.webp',
+		url: 'https://anime.bachtiar.my.id/',
+		github: 'https://github.com/superti4r/4yasenime',
 		category: 'Web App',
-		tags: ['laravel', 'tailwindcss', 'go', 'flutter', 'vue']
-	},
-	{
-		name: 'S-Learn',
-		description:
-			'A comprehensive Learning Management System (LMS) built with Laravel, Tailwind CSS, Go, Flutter. It offers a seamless experience for both educators and students, featuring course creation, interactive lessons, and real-time collaboration.',
-		image: '/images/projects/slearn.png',
-		url: 'https://slearn-jti.com/',
-		github: 'https://github.com/jtiinnovation/slearn',
-		category: 'Web App',
-		tags: ['laravel', 'tailwindcss', 'go', 'flutter', 'vue']
+		tags: ['nextjs', 'tailwindcss', 'restfulapi', 'selia']
 	},
 ];
 
