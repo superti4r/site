@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>{title} | pow.kim</title>
+	<title>{title} | superti4r</title>
 	<meta name="description" content={description} />
 
 	<link rel="canonical" href={origin(url)} />
@@ -24,11 +24,11 @@
 	<meta property="og:type" content="article" />
 	<meta property="og:url" content={origin(url)} />
 	<meta property="og:image" content={origin(image)} />
-	<meta property="og:site_name" content="pow.kim" />
+	<meta property="og:site_name" content="superti4r" />
 
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={origin(image)} />
-	<meta name="twitter:site" content="@kimmyxpow" />
+	<meta name="twitter:site" content="@supereverydays" />
 </svelte:head>
