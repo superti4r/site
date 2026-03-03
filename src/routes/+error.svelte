@@ -1,31 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import Icon from '@iconify/svelte';
+	import { getErrorCopy } from '$lib/logic/error';
 
 	const status = page.status;
 
-	let title = 'Oops!';
-	let message = "Something's not quite right.";
-
-	if (status === 404) {
-		title = 'Page not found';
-		message = 'Looks like you’ve wandered off. This page doesn’t seem to exist.';
-	} else if (status === 403) {
-		title = 'Not allowed';
-		message = 'Hmm, you’re not supposed to be here.';
-	} else if (status === 500) {
-		title = "It's not you, it’s me";
-		message = "Something went wrong on the server. I'm probably fixing it right now.";
-	} else if (status === 502 || status === 503 || status === 504) {
-		title = 'Taking a short break';
-		message = 'The server is catching its breath. Try again in a little while.';
-	} else if (status >= 400 && status < 500) {
-		title = 'Uh-oh';
-		message = "Something's off with the request. Maybe try checking the URL?";
-	} else if (status >= 500) {
-		title = 'Server hiccup';
-		message = 'The system tripped over something. Let’s hope it recovers soon.';
-	}
+	const { title, message } = getErrorCopy(status);
 </script>
 
 <div class="border-b border-separator">

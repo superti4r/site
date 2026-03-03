@@ -1,29 +1,15 @@
 <script lang="ts">
 	import Seo from '$components/seo.svelte';
+	import PageIntro from '$components/sections/page-intro.svelte';
+	import SectionDivider from '$components/sections/section-divider.svelte';
 	import { goals, getProgress } from '$contents/goals';
 	import { cn } from '$lib/cn';
-	import { origin } from '$lib/url';
+	import { getGoalsSchema } from '$lib/logic/goals/schema';
 	import Icon from '@iconify/svelte';
 
 	const progress = getProgress();
 
-	const schema = {
-		'@context': 'https://schema.org',
-		'@type': 'ItemList',
-		name: 'Life Goals | superti4r',
-		description: 'A categorized list of life goals — from personal development to peaceful living.',
-		url: origin('/goals'),
-		author: {
-			'@type': 'Person',
-			name: 'Bachtiar Dwi Pramudi (superti4r)',
-			url: origin()
-		},
-		itemListElement: goals.map((g, i) => ({
-			'@type': 'ListItem',
-			position: ++i,
-			name: g.goal
-		}))
-	};
+	const schema = getGoalsSchema(goals);
 </script>
 
 <Seo
@@ -34,20 +20,10 @@
 	image="/images/banner.png"
 />
 
-<main class="border-b border-separator">
-	<div class="inner border-x border-separator px-8 py-8 lg:pt-42 lg:pb-28">
-		<div
-			class="mx-auto flex flex-col justify-center gap-2 lg:max-w-2xl lg:items-center lg:gap-6 lg:text-center"
-		>
-			<span class="font-handwriting text-xl text-foreground-text sm:text-2xl">
-				An evolving list of “maybe someday.”
-			</span>
-			<h1 class="text-4xl text-balance md:text-5xl">
-				A lifelong collection of things I’d love to feel
-			</h1>
-		</div>
-	</div>
-</main>
+<PageIntro
+	eyebrow="An evolving list of “maybe someday.”"
+	title="A lifelong collection of things I’d love to feel"
+/>
 
 <section class="border-b border-separator">
 	<div class="inner border-x border-separator">
@@ -83,6 +59,4 @@
 	</div>
 </section>
 
-<div class="border-b border-separator">
-	<div class="inner border-x border-separator py-28"></div>
-</div>
+<SectionDivider />

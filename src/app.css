@@ -6,7 +6,6 @@
 @custom-variant zinc (&:where(.zinc, .zinc *));
 @custom-variant white (&:where(.white, .white *));
 @custom-variant black (&:where(.black, .black *));
-@custom-variant pray-for-indonesia (&:where(.pray-for-indonesia, .pray-for-indonesia *));
 
 @theme {
 	--font-sans:
@@ -68,16 +67,6 @@
 	--foreground-button: var(--color-white);
 }
 
-.pray-for-indonesia {
-	--background: var(--color-teal-100);
-	--background-2: var(--color-teal-200);
-	--foreground-primary: #4b352a;
-	--foreground-text: var(--color-zinc-600);
-	--border: var(--color-teal-800);
-	--separator: var(--color-teal-500);
-	--foreground-button: var(--color-white);
-	--primary: #ff2dd1;
-}
 
 @layer base {
 	html {

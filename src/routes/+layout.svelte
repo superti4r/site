@@ -9,32 +9,26 @@
 	import { page } from '$app/state';
 	import { tick } from 'svelte';
 	import { dev } from '$app/environment';
+	import { postVisit, registerScrollListener } from '$lib/logic/layout';
 
 	let { children } = $props();
 
 	let scroll = $state<number>();
 
-	const handleScroll = () => {
-		const scrollTop = window.scrollY;
-		const docHeight = document.body.scrollHeight - window.innerHeight;
-		const scrollPercent = (scrollTop / docHeight) * 100;
-		scroll = scrollPercent;
-	};
-
 	$effect(() => {
-		if (page.status === 200 && !dev)
-			fetch('/api/visits', {
-				method: 'POST',
-				body: JSON.stringify({
-					pathname: page.url.pathname
-				})
-			});
+		if (page.status === 200 && !dev) {
+			postVisit(page.url.pathname);
+		}
 
-		tick().then(() => {
-			window.addEventListener('scroll', handleScroll);
-		});
+		const cleanupPromise = tick().then(() =>
+			registerScrollListener((percent) => {
+				scroll = percent;
+			})
+		);
 
-		return () => window.addEventListener('scroll', handleScroll);
+		return () => {
+			cleanupPromise.then((cleanup) => cleanup());
+		};
 	});
 </script>
 

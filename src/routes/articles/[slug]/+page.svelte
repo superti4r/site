@@ -1,43 +1,18 @@
 <script lang="ts">
 	import Seo from '$components/seo.svelte';
-	import { type ArticleModule } from '$contents/articles/utils';
-	import { origin } from '$lib/url';
+	import { getArticleModuleKey, getArticleModulePromise, getArticleModules } from '$lib/logic/articles/content';
+	import { getArticleSchema } from '$lib/logic/articles/schema';
 	import { formatDate } from 'date-fns';
 	import Giscus from '@giscus/svelte';
 	import { currentTheme } from '$lib/writeables';
 
 	const { data } = $props();
 
-	const modules = $derived(import.meta.glob<ArticleModule>('/src/contents/articles/*/*.svx'));
-	const key = $derived(`/src/contents/articles/${data.article.lang}/${data.article.slug}.svx`);
-	const modPromise = $derived(modules[key]?.());
+	const modules = $derived(getArticleModules());
+	const key = $derived(getArticleModuleKey(data.article.lang, data.article.slug));
+	const modPromise = $derived(getArticleModulePromise(modules, key));
 
-	const schema = {
-		'@context': 'https://schema.org',
-		'@type': 'BlogPosting',
-		headline: data.article.title,
-		description: data.article.excerpt,
-		image: origin(data.article.thumbnail),
-		author: {
-			'@type': 'Person',
-			name: 'Bachtiar Dwi Pramudi (superti4r)',
-			url: origin()
-		},
-		publisher: {
-			'@type': 'Organization',
-			name: 'superti4r',
-			logo: {
-				'@type': 'ImageObject',
-				url: origin('https://avatars.githubusercontent.com/u/142956484?v=4')
-			}
-		},
-		datePublished: data.article.created,
-		dateModified: data.article.updated,
-		mainEntityOfPage: {
-			'@type': 'WebPage',
-			'@id': origin(`articles/${data.article.slug}`)
-		}
-	};
+	const schema = $derived(getArticleSchema(data.article));
 
 	const isEnglish = $derived(data.article.lang === 'en');
 	const isBlackTheme = $derived(['zinc', 'black'].includes($currentTheme));

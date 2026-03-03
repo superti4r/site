@@ -3,23 +3,23 @@
 	import { page } from '$app/state';
 	import { getSnippets } from '$contents/snippets';
 	import Snippets from '$components/features/snippets.svelte';
+	import PageIntro from '$components/sections/page-intro.svelte';
+	import SectionDivider from '$components/sections/section-divider.svelte';
 	import Icon from '@iconify/svelte';
 	import Seo from '$components/seo.svelte';
-	import { origin } from '$lib/url';
+	import {
+		buildSnippetSearchParams,
+		getSnippetFiltersFromUrl,
+		updateSnippetFilters
+	} from '$lib/logic/snippets/filters';
+	import { getSnippetsSchema } from '$lib/logic/snippets/schema';
 
-	let selectedFilters = {
-		search: page.url.searchParams.get('search') || ''
-	};
+	let selectedFilters = $state(getSnippetFiltersFromUrl(page.url));
 
-	const snippets = getSnippets(selectedFilters);
+	const snippets = $derived(getSnippets(selectedFilters));
 
 	const updateQuery = () => {
-		const searchParams = new URLSearchParams();
-
-		if (selectedFilters.search) {
-			searchParams.set('search', selectedFilters.search);
-		}
-
+		const searchParams = buildSnippetSearchParams(selectedFilters);
 		goto(`?${searchParams.toString()}`, {
 			keepFocus: true,
 			noScroll: true,
@@ -31,26 +31,12 @@
 		const target = event.target as HTMLInputElement;
 
 		const value = target.value;
-
-		selectedFilters.search = value;
+		updateSnippetFilters(selectedFilters, value);
 
 		updateQuery();
 	};
 
-	const schema = {
-		'@context': 'https://schema.org',
-		'@type': 'CollectionPage',
-		name: 'Code Snippets | superti4r',
-		description:
-			'A collection of handy code snippets, utilities, and tiny helpers — ready to reuse.',
-		url: origin('/snippets'),
-		author: {
-			'@type': 'Person',
-			name: 'Bachtiar Dwi Pramudi (superti4r)',
-			url: origin()
-		},
-		hasPart: snippets.map((s) => ({ '@type': 'CreativeWork', name: s.name }))
-	};
+	const schema = $derived(getSnippetsSchema(snippets));
 </script>
 
 <Seo
@@ -61,21 +47,11 @@
 	image="/images/banner.png"
 />
 
-<main class="border-b border-separator">
-	<div class="inner border-x border-separator px-8 py-8 lg:pt-42 lg:pb-28">
-		<div
-			class="mx-auto flex flex-col justify-center gap-2 lg:max-w-2xl lg:items-center lg:gap-6 lg:text-center"
-		>
-			<span class="font-handwriting text-xl text-foreground-text sm:text-2xl">
-				Reusable little things
-			</span>
-			<h1 class="text-4xl text-balance md:text-5xl">Code snippets I keep coming back to</h1>
-			<p class="text-balance sm:text-lg">
-				Small bits of code I’ve used, reused, and forgotten more times than I’d like to admit.
-			</p>
-		</div>
-	</div>
-</main>
+<PageIntro
+	eyebrow="Reusable little things"
+	title="Code snippets I keep coming back to"
+	description="Small bits of code I’ve used, reused, and forgotten more times than I’d like to admit."
+/>
 
 <section class="border-b border-separator">
 	<div class="inner border-x border-separator">
@@ -101,6 +77,4 @@
 	</div>
 </section>
 
-<div class="border-b border-separator">
-	<div class="inner border-x border-separator py-28"></div>
-</div>
+<SectionDivider />

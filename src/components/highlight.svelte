@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { highlightAll } from '@speed-highlight/core';
+	import { runHighlight } from '$lib/logic/highlight';
 	import { onMount } from 'svelte';
 	let { lang, code }: { lang: string; code: string } = $props();
 
 	onMount(() => {
-		highlightAll();
+		runHighlight();
 	});
 </script>
 

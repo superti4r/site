@@ -1,44 +1,14 @@
 <script lang="ts">
 	import Seo from '$components/seo.svelte';
-	import { origin } from '$lib/url';
+	import PageIntro from '$components/sections/page-intro.svelte';
+	import SectionDivider from '$components/sections/section-divider.svelte';
+	import { getAboutSchema } from '$lib/logic/about/schema';
 	import Icon from '@iconify/svelte';
 	import { formatDistance } from 'date-fns';
 
 	let { data } = $props();
 
-	const schema = {
-		'@context': 'https://schema.org',
-		'@type': 'Person',
-		name: 'Bachtiar Dwi Pramudi (superti4r)',
-		url: origin('/about'),
-		image: origin('/images/icon.png'),
-		sameAs: [
-			'https://github.com/superti4r',
-			'https://twitter.com/supereverydays',
-			'https://instagram.com/superti4r',
-			'https://linkedin.com/in/supertiar'
-		],
-		jobTitle: 'Fullstack Web Developer',
-		description:
-			'As a Software Engineer with expertise in web development, I am creating innovative and user-friendly solutions that real-world problems. I am currently pursuing my S.Tr.Kom degree in Informatic Engineering at the Jember State Polytechnic, where i honed my skills in Web Development.',
-		knowsAbout: [
-			'Web Development',
-			'Fullstack Development',
-            'PHP',
-            'Laravel',
-			'JavaScript',
-            'TypeScript',
-            'Vue.js',
-			'Svelte',
-			'React.js',
-			'Tailwind CSS',
-			'CSS',
-		],
-		alumniOf: {
-			'@type': 'EducationalOrganization',
-			name: 'Jember State Polytechnic',
-		}
-	};
+	const schema = getAboutSchema();
 </script>
 
 <Seo
@@ -49,18 +19,10 @@
 	image="/images/banner.png"
 />
 
-<main class="border-b border-separator">
-	<div class="inner border-x border-separator px-8 py-8 lg:pt-42 lg:pb-28">
-		<div
-			class="mx-auto flex flex-col justify-center gap-2 lg:max-w-2xl lg:items-center lg:gap-6 lg:text-center"
-		>
-			<span class="font-handwriting text-xl text-foreground-text sm:text-2xl">
-				A little context, if you’re curious
-			</span>
-			<h1 class="text-4xl text-balance md:text-5xl">Who I am, and why this site exists</h1>
-		</div>
-	</div>
-</main>
+<PageIntro
+	eyebrow="A little context, if you’re curious"
+	title="Who I am, and why this site exists"
+/>
 
 <section class="border-b border-separator">
 	<div class="inner border-x border-separator">
@@ -197,6 +159,4 @@
 	</section>
 {/if}
 
-<div class="border-b border-separator">
-	<div class="inner border-x border-separator py-28"></div>
-</div>
+<SectionDivider />

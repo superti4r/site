@@ -2,112 +2,54 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import Articles from '$components/features/articles.svelte';
+	import PageIntro from '$components/sections/page-intro.svelte';
+	import SectionDivider from '$components/sections/section-divider.svelte';
 	import Seo from '$components/seo.svelte';
 	import { getArticles, getCategories, getTags } from '$contents/articles/utils';
+	import {
+		buildArticleSearchParams,
+		createArticleFiltersList,
+		getArticleFiltersFromUrl,
+		setArticleLanguage,
+		updateArticleFilters
+	} from '$lib/logic/articles/filters';
+	import { getArticlesSchema } from '$lib/logic/articles/schema';
 	import { cn } from '$lib/cn';
-	import { origin } from '$lib/url';
 	import Icon from '@iconify/svelte';
 
-	let selectedFilters = $derived<{
-		search: string;
-		categories: string[];
-		tags: string[];
-		lang: 'en' | 'id';
-	}>({
-		search: page.url.searchParams.get('search') || '',
-		categories: page.url.searchParams.getAll('categories') || [],
-		tags: page.url.searchParams.getAll('tags') || [],
-		lang: (page.url.searchParams.get('lang') as 'id') || 'en'
-	});
+	let selectedFilters = $derived(getArticleFiltersFromUrl(page.url));
 
 	let articles = $derived(getArticles(selectedFilters));
 
 	const categories = getCategories();
 	const tags = getTags();
 
-	const filtersList = [
-		{
-			title: 'Filter by categories',
-			type: 'categories' as const,
-			options: categories
-		},
-		{
-			title: 'Filter by tags:',
-			type: 'tags' as const,
-			options: tags
-		}
-	];
+	const filtersList = createArticleFiltersList(categories, tags);
 
 	const updateQuery = () => {
-		const searchParams = new URLSearchParams();
-
-		if (selectedFilters.search) {
-			searchParams.set('search', selectedFilters.search);
-		}
-
-		if (selectedFilters.lang) {
-			searchParams.set('lang', selectedFilters.lang);
-		}
-
-		selectedFilters.categories.forEach((cat) => {
-			searchParams.append('categories', cat);
-		});
-
-		selectedFilters.tags.forEach((tag) => {
-			searchParams.append('tags', tag);
-		});
-
+		const searchParams = buildArticleSearchParams(selectedFilters);
 		goto(`?${searchParams.toString()}`, { replaceState: true, keepFocus: true, noScroll: true });
 	};
 
 	const onFilterChange = (event: Event, type: keyof typeof selectedFilters) => {
 		const target = event.target as HTMLInputElement;
-
 		const value = target.value;
 
-		if (type === 'search') {
-			selectedFilters.search = value;
-		} else if (type !== 'lang') {
-			selectedFilters[type] = target.checked
-				? [...selectedFilters[type], value]
-				: selectedFilters[type].filter((option) => option !== value);
+		if (type !== 'lang') {
+			updateArticleFilters(selectedFilters, type, value, target.checked);
 		}
 
 		updateQuery();
 	};
 
 	const onSwitchLanguage = (lang: 'en' | 'id') => {
-		selectedFilters.lang = lang;
+		setArticleLanguage(selectedFilters, lang);
 		updateQuery();
 	};
 
 	let isEnglish = $derived(selectedFilters.lang === 'en');
 
-	const schema = $derived({
-		'@context': 'https://schema.org',
-		'@type': 'Blog',
-		name: 'Articles | superti4r',
-		url: origin('/articles'),
-		description:
-			'Articles, notes, and reflections from superti4r — mostly about development, learning, and personal insights.',
-		author: {
-			'@type': 'Person',
-			name: 'Bachtiar Dwi Pramudi (superti4r)',
-			url: origin()
-		},
-		mainEntity: articles.map((a) => ({
-			'@type': 'BlogPosting',
-			image: origin(a.thumbnail),
-			headline: a.title,
-			url: origin(`/articles/${a.slug}`),
-			datePublished: a.created,
-			author: {
-				'@type': 'Person',
-				name: 'Bachtiar Dwi Pramudi (superti4r)',
-				url: origin()
-			}
-		}))
-	});
+	const schema = $derived(getArticlesSchema(articles));
 </script>
 
 <Seo
@@ -118,23 +60,11 @@
 	image="/images/banner.png"
 />
 
-<main class="border-b border-separator">
-	<div class="inner border-x border-separator px-8 py-8 lg:pt-42 lg:pb-28">
-		<div
-			class="mx-auto flex flex-col justify-center gap-2 lg:max-w-2xl lg:items-center lg:gap-6 lg:text-center"
-		>
-			<span class="font-handwriting text-xl text-foreground-text sm:text-2xl">
-				Things I needed to write down
-			</span>
-			<h1 class="text-4xl text-balance md:text-5xl">
-				Notes, rambles, and things I didn’t want to forget
-			</h1>
-			<p class="text-balance sm:text-lg">
-				I write mostly to understand things better. If it helps someone else, that’s a bonus.
-			</p>
-		</div>
-	</div>
-</main>
+<PageIntro
+	eyebrow="Things I needed to write down"
+	title="Notes, rambles, and things I didn’t want to forget"
+	description="I write mostly to understand things better. If it helps someone else, that’s a bonus."
+/>
 
 <section class="border-b border-separator">
 	<div class="inner border-x border-separator">
@@ -219,6 +149,4 @@
 	</div>
 </section>
 
-<div class="border-b border-separator">
-	<div class="inner border-x border-separator py-28"></div>
-</div>
+<SectionDivider />

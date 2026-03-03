@@ -2,61 +2,13 @@
 	import { page } from '$app/state';
 	import { cn } from '$lib/cn';
 	import { currentTheme } from '$lib/writeables';
+	import { extraLinks, notebookLinks, personalLinks, themes } from '$lib/logic/navigation';
 	import Icon from '@iconify/svelte';
-	import { Dialog, Popover } from 'bits-ui';
+	import { Popover } from 'bits-ui';
 	import { Select } from 'bits-ui';
-
-	const notebookLinks = [
-		{
-			href: '/articles',
-			icon: 'solar:notes-linear',
-			bg: 'bg-[#B7B1F2]',
-			title: 'Article',
-			desc: 'Stuff I’ve written about tech, life, and whatever else I felt like putting into words.'
-		},
-		{
-			href: '/snippets',
-			icon: 'solar:paperclip-rounded-linear',
-			bg: 'bg-[#FDB7EA]',
-			title: 'Snippets',
-			desc: 'Small pieces of code I’ve reused, reshaped, or just wanted to remember.'
-		},
-		{
-			href: '/guest-book',
-			icon: 'solar:paw-linear',
-			bg: 'bg-[#FFDCCC]',
-			title: 'Guest Book',
-			desc: 'Say hi, leave a trace, or just let me know you were here.'
-		}
-	];
-
-	const personalLinks = [
-		{ href: '/about', emoji: '👋', label: 'About' },
-		{ href: '/goals', emoji: '🎯', label: 'Goals' }
-	];
-
-	const extraLinks = [
-		{ href: '/attributions', icon: 'solar:accessibility-linear', label: 'Attribution' },
-		{
-			href: 'https://discord.gg/',
-			icon: 'radix-icons:discord-logo',
-			label: 'Discord Server',
-			attr: {
-				target: '_blank',
-				rel: 'noopener noreferrer'
-			}
-		}
-	];
 
 	let isOpen = $state(false);
 
-	const themes = [
-		{ value: 'default', label: 'Default', colour: '#f8f6e3' },
-		{ value: 'white', label: 'White', colour: '#fff' },
-		{ value: 'zinc', label: 'Zinc', colour: '#18181b' },
-		{ value: 'black', label: 'Black', colour: '#000' },
-		{ value: 'pray-for-indonesia', label: '#ResetIndonesia', colour: '#FF2DD1' }
-	];
 
 	$currentTheme = page.data.theme;
 	const selectedTheme = $derived(themes.find((theme) => theme.value === $currentTheme)!);

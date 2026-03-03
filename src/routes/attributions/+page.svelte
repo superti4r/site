@@ -1,28 +1,11 @@
 <script>
 	import Seo from '$components/seo.svelte';
+	import PageIntro from '$components/sections/page-intro.svelte';
+	import SectionDivider from '$components/sections/section-divider.svelte';
 	import { attributions } from '$contents/attributions';
-	import { origin } from '$lib/url';
+	import { getAttributionsSchema } from '$lib/logic/attributions/schema';
 
-	const schema = {
-		'@context': 'https://schema.org',
-		'@type': 'WebPage',
-		name: 'Attributions & Credits | superti4r',
-		url: origin('/attributions'),
-		description:
-			'A list of tools, frameworks, libraries, services, and inspirations that helped bring this website to life.',
-		author: {
-			'@type': 'Person',
-			name: 'Bachtiar Dwi Pramudi (superti4r)',
-			url: origin()
-		},
-		about: attributions.flatMap((a) =>
-			a.items.map((i) => ({
-				'@type': 'CreativeWork',
-				name: i.name,
-				url: i.href
-			}))
-		)
-	};
+	const schema = getAttributionsSchema(attributions);
 </script>
 
 <Seo
@@ -33,19 +16,11 @@
 	image="/images/banner.png"
 />
 
-<main class="border-b border-separator">
-	<div class="inner border-x border-separator px-8 py-8 lg:pt-42 lg:pb-28">
-		<div
-			class="mx-auto flex flex-col justify-center gap-2 lg:max-w-2xl lg:items-center lg:gap-6 lg:text-center"
-		>
-			<span class="font-handwriting text-xl text-foreground-text sm:text-2xl">
-				Pieces of the puzzle behind this little website
-			</span>
-			<h1 class="text-4xl text-balance md:text-5xl">What makes this site run</h1>
-			<p class="text-balance sm:text-lg">This site came together thanks to tools I love using.</p>
-		</div>
-	</div>
-</main>
+<PageIntro
+	eyebrow="Pieces of the puzzle behind this little website"
+	title="What makes this site run"
+	description="This site came together thanks to tools I love using."
+/>
 
 <section class="border-b border-separator">
 	<div class="inner border-x border-separator">
@@ -72,6 +47,4 @@
 	</div>
 </section>
 
-<div class="border-b border-separator">
-	<div class="inner border-x border-separator py-28"></div>
-</div>
+<SectionDivider />
