@@ -1,18 +1,25 @@
-import type { Handle } from '@sveltejs/kit';
-import { building } from '$app/environment';
-import { auth } from '$lib/server/auth';
 import { svelteKitHandler } from 'better-auth/svelte-kit';
+import { building } from '$app/environment';
+import { auth } from '$lib/auth';
 import { sequence } from '@sveltejs/kit/hooks';
+import type { Handle } from '@sveltejs/kit';
 
-const handleBetterAuth: Handle = async ({ event, resolve }) => {
-	const session = await auth.api.getSession({ headers: event.request.headers });
+export const base: Handle = async ({ event, resolve }) => {
+	const theme = event.cookies.get('theme');
 
-	if (session) {
-		event.locals.session = session.session;
-		event.locals.user = session.user;
-	}
+	const response = await resolve(event, {
+		transformPageChunk: ({ html }) => {
+			if (theme) {
+				html = html.replace(/<html(.*?)>/, `<html$1 class="${theme}">`);
+			}
+			return html;
+		}
+	});
 
-	return svelteKitHandler({ event, resolve, auth, building });
+	return response;
 };
 
-export const handle: Handle = handleBetterAuth;
+export const handle = sequence(
+	({ event, resolve }) => svelteKitHandler({ event, resolve, auth: auth(), building }),
+	base
+);
