@@ -21,10 +21,10 @@ export const attributions = [
 					'I switched to Bun and never looked back. It’s fast, smooth, and handles everything I throw at it.'
 			},
 			{
-				name: 'Cloudflare Workers',
-				href: 'https://workers.cloudflare.com/?ref=bachtiar.my.id',
+				name: 'Vercel',
+				href: 'https://vercel.com/?ref=bachtiar.my.id',
 				description:
-					'Running things at the edge without the headaches. My go-to for speed and global reach.'
+					'Shipping fast with previews, edge-ready deploys, and a workflow that stays out of the way.'
 			},
 			{
 				name: 'Neon',
