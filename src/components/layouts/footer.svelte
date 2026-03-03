@@ -83,7 +83,7 @@
 			</div>
 		</div>
 		<p class="border-t border-separator px-8 py-4 text-center text-sm">
-			© 2025 superti4r. All rights reserved.
+			© 2026 superti4r. All rights reserved.
 		</p>
 	</div>
 </footer>

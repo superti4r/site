@@ -5,6 +5,8 @@
     "": {
       "name": "site",
       "dependencies": {
+        "@fontsource-variable/syne": "^5.2.7",
+        "@fontsource/mynerve": "^5.2.8",
         "@giscus/svelte": "^3.1.0",
         "@iconify/svelte": "^5.2.1",
         "@paralleldrive/cuid2": "^3.3.0",
@@ -259,7 +261,11 @@
 
     "@floating-ui/utils": ["@floating-ui/utils@0.2.11", "", {}, "sha512-RiB/yIh78pcIxl6lLMG0CgBXAZ2Y0eVHqMPYugu+9U0AeT6YBeiJpf7lbdJNIugFP5SIjwNRgo4DhR1Qxi26Gg=="],
 
+    "@fontsource-variable/syne": ["@fontsource-variable/syne@5.2.7", "", {}, "sha512-B2z7P0mGdNSAgz6SmtK7HXReZL22WJ8Z8sk5Z1ZuKiCSRM7DwWLjWXLwhbQ+CvmtNS/+p95jGvVEfQT9bm+UKw=="],
+
     "@fontsource/fira-mono": ["@fontsource/fira-mono@5.2.7", "", {}, "sha512-wYrAn6i3nH6luqQBZxtWUpl4UTUvs9AEbEeZxksPMwIqyjRRaxHTNW3c2VfM50gabS2IS7pT8lVWS2USB4ukYA=="],
+
+    "@fontsource/mynerve": ["@fontsource/mynerve@5.2.8", "", {}, "sha512-duSH0h14VdhqoSApF3tuXRraePmv3nq7qBw5WpEETxwn4Ct3e0q6cHDVN0w5JZX0bLTeUNZBY3NKjh4dD+NcsQ=="],
 
     "@giscus/svelte": ["@giscus/svelte@3.1.0", "", { "dependencies": { "giscus": "^1.6.0" }, "peerDependencies": { "svelte": "^3 || ^4 || ^5" } }, "sha512-87AhkRvT5mUzGFbbv5RX1+DiC8RsRVZPzyGDNyshNUlezlTjnLB7cXf7ySqEKu6KlRTP41c1XGUufoKhoaQjqg=="],
 
