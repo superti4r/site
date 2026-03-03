@@ -6,6 +6,7 @@
 	import GuestBookMessageList from '$components/guest-book/message-list.svelte';
 	import GuestBookMessageForm from '$components/guest-book/message-form.svelte';
 	import GuestBookSignIn from '$components/guest-book/sign-in.svelte';
+	import GuestBookSignOut from '$components/guest-book/sign-out.svelte';
 	import SectionDivider from '$components/sections/section-divider.svelte';
 	import {
 		createGuestBookAuthClient,
@@ -68,6 +69,7 @@
 					<ScrollArea.Corner />
 				</ScrollArea.Root>
 				{#if session}
+					<GuestBookSignOut onSignOut={() => authClient.signOut()} />
 					{#if form && errors && constraints && enhance && submitting}
 						<GuestBookMessageForm
 							form={$form as GuestBookFormData}
@@ -79,9 +81,14 @@
 					{/if}
 				{:else}
 					<GuestBookSignIn
-						onSignIn={() =>
+						onSignInGithub={() =>
 							authClient.signIn.social({
 								provider: 'github',
+								callbackURL: '/guest-book'
+							})}
+						onSignInGoogle={() =>
+							authClient.signIn.social({
+								provider: 'google',
 								callbackURL: '/guest-book'
 							})}
 					/>

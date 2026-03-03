@@ -26,7 +26,7 @@
 		{...messageConstraints}
 	/>
 	<button
-		class="inline-flex size-14 shrink-0 items-center justify-center bg-primary text-white transition-all hover:bg-primary/90 [&_svg]:transition-all hover:[&_svg]:-rotate-35"
+		class="inline-flex size-14 shrink-0 items-center justify-center bg-primary text-white shadow-sm transition-all hover:bg-primary/90 focus-visible:ring-primary/40 focus-visible:ring-offset-background active:translate-y-px focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none [&_svg]:transition-all hover:[&_svg]:-rotate-35"
 	>
 		<Icon icon="solar:plain-linear" class="size-6" />
 	</button>
