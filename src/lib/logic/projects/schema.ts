@@ -7,7 +7,7 @@ export const getProjectsSchema = (projects: Project[]) => ({
 	name: 'Projects | superti4r',
 	url: origin('/projects'),
 	description:
-		'A collection of personal and collaborative projects by Pow — web apps, experiments, tools, and ideas in progress.',
+		'A collection of personal and collaborative projects by superti4r — web apps, experiments, tools, and ideas in progress.',
 	author: {
 		'@type': 'Person',
 		name: 'Bachtiar Dwi Pramudi (superti4r)',
