@@ -69,6 +69,8 @@
 		"@iconify/svelte": "^5.2.1",
 		"@paralleldrive/cuid2": "^3.3.0",
 		"@speed-highlight/core": "^1.2.14",
+		"@sveltejs/adapter-cloudflare": "^7.2.8",
+		"@sveltejs/adapter-netlify": "^6.0.4",
 		"bits-ui": "^2.16.2",
 		"clsx": "^2.1.1",
 		"date-fns": "^4.1.0",
