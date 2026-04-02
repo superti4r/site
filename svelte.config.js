@@ -4,6 +4,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { createHighlighter } from 'shiki';
 
 const theme = 'github-dark';
+
 const highlighter = await createHighlighter({
 	themes: [theme],
 	langs: ['javascript', 'typescript', 'css', 'html']
@@ -14,6 +15,7 @@ const mdsvexOptions = {
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
 			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme }));
+
 			return `{@html \`${html}\` }`;
 		}
 	}
